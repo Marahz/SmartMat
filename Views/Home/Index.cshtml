@@ -1,0 +1,104 @@
+﻿@model RecipeUserViewModel
+@{
+    ViewData["Title"] = "Forside";
+}
+
+<style>
+    /*   SEARCH BOX    */
+    #title {
+      font-weight: 700;
+    }
+    #indexBackground {
+      position: absolute;
+      right: 0;
+      height: 70vh;
+      z-index: -100;
+      filter: brightness(107%);
+    }
+    #flex-container {
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    #search-container{
+      max-width: 30em;
+      flex: 0 0;
+    }
+    #searchbox {
+      background-color: white;
+      border-radius: 2em;
+      padding: 0.5em;
+      box-shadow: 2px 2px 4px 1px #00000030;
+    }
+    #searchbox input {
+      border: none;
+      border-radius: 2em;
+    }
+    #searchbox button {
+      border: none;
+      border-radius: 2em;
+      padding: 0.4em 2em !important;
+      margin: 0;
+    }
+    
+    h3 {
+        font-weight: 600;
+    }
+</style>
+<partial name="_MealNavPartial" />
+
+<img src="~/siteimages/background.jpg" alt="bakgrunnsbilde av mat" id="indexBackground">
+<div id="flex-container">
+    <div class="fillerdiv"></div>
+    <div class="text-left" id="search-container">
+        <h1 class="display-6" id="title">Oppdag og del oppskrifter basert på det du har i kjøleskapet</h1>
+        
+        <form id = "search-form">
+            <label for="search-text" style="font-size: 0.9em; opacity: 0.9;">Søk etter en spesifikk oppskrift eller ingrediensene du har tilgjengelig:</label>
+            <div id="searchbox" class="input-group mb-3">
+                <input type="search" id = "search-text" class="form-control" placeholder="eks. brokkoli, egg, melk, potet"/>
+            </div>
+        </form>
+        
+    </div>
+
+    <div id="recipe-results"></div>
+    <a asp-area="" asp-controller="Recipes" asp-action="Index" class="btn btn-dark allRecipesLink">Se alle oppskriftene</a>
+    
+    @section Scripts
+    {
+        <script>
+            let main = document.getElementById("main");
+            if (innerWidth < 1030 || (innerWidth < 1600 && main.classList.contains("darkMode"))){
+                $("#background").css("display", "none");
+            }
+        
+            async function search(){
+                let search = $("#search-text").val();
+                if (search.length > 1){
+                    let result = await fetch("/Home/Recipes?search=" + search);
+                    $("#recipe-results").html(await result.text());
+                }
+                else {
+                    $("#recipe-results").html("");
+                }
+            }
+            document.getElementById('search-form').onkeyup = search;
+            document.getElementById('search-form').onsubmit = function (event){
+                event.preventDefault();
+                search();
+            };
+        </script>
+    }
+    <div class="fillerdiv"></div>
+</div>
+
+
+<div id="popular-recipes">
+    <h3>Populære oppskrifter</h3>
+    <div class="horizontal-scroll">
+        <partial name="_RecipePartial" model="Model"/>
+    </div>
+</div>

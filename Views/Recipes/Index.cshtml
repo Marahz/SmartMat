@@ -1,0 +1,11 @@
+@model RecipeUserViewModel
+
+@{
+    ViewData["Title"] = "Alle Oppskrifter";
+}
+
+<h1 class="standaloneHeader">Alle Oppskrifter</h1>
+
+<a class="btn btn-secondary centeredButton" asp-action="Create">Lag ny oppskrift</a>
+
+<partial name="_RecipePartial" model="Model"/>

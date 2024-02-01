@@ -1,0 +1,29 @@
+@using Microsoft.AspNetCore.Identity
+@using smartmat.Data
+@inject SignInManager<ApplicationUser> _signInManager
+@inject UserManager<ApplicationUser> _userManager
+
+@if (_signInManager.IsSignedIn(User))
+{
+    
+    <li class="nav-item">
+        <a class="nav-link text-dark btn-primary" asp-area="Identity" asp-page="/Account/Manage/Index">Min Side</a>
+    </li>
+    <li class="nav-item">
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = ""})">
+            <a class="nav-link text-dark btn-primary" style="background-color: #FFB84F">
+                <button type="submit" style="background-color: #FFB84F; border: transparent; color: black;">Logg ut</button>
+            </a>
+        </form>
+    </li>
+    <input type="checkbox" id="darkModeSelector"/>
+}
+else
+{
+    <li class="nav-item">
+        <a class="text-dark btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Registrer</a>
+    </li>
+    <li class="nav-item">
+        <a class="text-dark btn btn-primary" asp-area="Identity" asp-page="/Account/Login">Logg inn</a>
+    </li>
+}

@@ -1,0 +1,112 @@
+﻿#flex-container{
+    margin: 3em 0 0 0;
+}
+
+#recipe-results{
+    max-width: 40em;
+    margin-bottom: 2em;
+}
+
+#search-partial ul {
+    margin-bottom: 3em;
+}
+
+#search-partial ul li{
+    background-color: var(--globalBackground);
+    color: var(--globalColor);
+    list-style-type: none;
+    display: inline-flex;
+    text-align: center;
+    margin: 15px 10px 0 0;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 1px solid white;
+    transition: transform 200ms;
+}
+
+#search-partial li a{
+    font-size: 17px;
+    text-decoration: none;
+    color: inherit;
+    padding: 5px;
+    border-bottom: 3px solid transparent;
+}
+
+#search-partial img{
+    width: 250px;
+    height: 150px;
+    margin: 8px 0 10px 0;
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+}
+
+.userImage {
+    width: 1.5em !important;
+    height: 1.5em !important;
+    border-radius: 50% !important;
+}
+
+#search-partial a:hover{
+    border-color: darkorange;
+}
+
+#search-partial li:hover{
+    transform: scale(0.8);
+    opacity: 0.5;
+}
+
+.timeBubble {
+    display: inline-block;
+    color: white;
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    padding: 0.5em;
+    font-size: 1.1em;
+    text-anchor: middle;
+    box-shadow: 3px 3px 5px -5px black;
+    border: 1px solid #00000020;
+    transform: translateY(1em);
+    text-align: center;
+}
+.timeBubble span {
+    margin: 0; padding: 0;
+    display: inline-block;
+}
+.timeBubble .min {
+    transform: translateY(-1.4em);
+    font-size: 0.6em;
+}
+.orangeBubble {
+    background-color: #f7931d;
+}
+.blueBubble {
+    background-color: #1aa5aa;
+}
+
+.resultRow {
+    position:relative;
+    color: black;
+    margin: 1em 1em 2em 1em;
+}
+
+.resultRow:hover{
+    text-decoration: none;
+    color: black;
+    border-top-color: lightgray;
+    border-right-color: lightgray;
+    border-bottom-color: dimgray;
+    border-left-color: dimgray;
+    border-width: 3px;
+}
+
+.attachedBubble {
+    position: absolute;
+    right: 0.8em;
+    bottom: 4em;
+}
+.bigBubble {
+    bottom: 7em;
+    right: 1em;
+    font-size: 1.2em;
+}

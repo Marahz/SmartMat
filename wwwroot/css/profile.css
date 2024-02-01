@@ -1,0 +1,132 @@
+.mainDiv {
+    padding: 2em 1em;
+}
+
+.previous{
+    border-radius: 1em;
+    transition-property: transform;
+    transition-duration: 100ms;
+}
+
+.previous:hover{
+    transform: scale(1.1);
+}
+
+#profileNav li a{
+    color: black;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    font-size: 18px;
+    padding: 1em 2em 1em 2em;
+}
+
+#profileNav li a:hover{
+    border-bottom: 2px solid darkorange;
+    transform: scale(1.1);
+}
+
+#imgUpload
+{
+    display: none;
+}
+
+#profileImg
+{
+    cursor: pointer;
+}
+
+#profile-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#profile-container img {
+    width: 250px;
+    height: 250px;
+}
+
+.profileHead{
+    font-weight: bold;
+    margin-top: -200px;
+    margin-left: 30%;
+}
+
+#inputForm{
+    font-weight: normal;
+    color: dimgray;
+    margin-top: 20px;
+}
+
+#inputForm button{
+    margin: 30px 0 0 auto;
+    display: block;
+}
+
+h6{
+    padding-bottom: 10px;
+    border-bottom: 2px solid lightgray;
+}
+
+.custom-file {
+    transform: translateX(-16em) translateY(-21em);
+}
+
+#password-change .btn{
+    margin-top: -2em;
+    background-color: #383d41;
+    border-radius: 20px;
+    padding: -5px;
+    transition-property: transform;
+    transition-duration: 100ms;
+}
+
+#password-change .btn:hover{
+    transform: scale(1.1);
+}
+
+.flex-column {
+    float: left;
+    width: 50%;
+}
+
+#newRecipe .form-group{
+    text-align: left;
+    font-size: 20px;
+    margin: 2em 0 0 0;
+}
+
+#inputFormNyOpp{
+    max-width: 75%;
+    transform: translateX(17%);
+}
+
+.boxes .column{
+    margin: 2em 0 2em 0;
+    padding: 0 3em 0 0;
+}
+
+.recipeImg{
+    display: grid;
+    transform: translate(20em, 20em);
+}
+
+.time{
+    max-width: 10%;
+    transform: translateX(22em);
+}
+
+.allRecipes{
+    border-radius: 1em;
+    max-width: 15%;
+    transition-property: transform;
+    transition-duration: 100ms;
+}
+
+.allRecipes:hover{
+    transform: scale(1.1);
+}
+
+.standaloneHeader{
+    border-bottom: 2px lightgray;
+}

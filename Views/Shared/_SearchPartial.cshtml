@@ -1,0 +1,62 @@
+﻿@model smartmat.Models.RecipeUserViewModel
+@{
+    var totalResultCount = Model.Recipes.Count();
+    var recipes = Model.Recipes.Take(8).ToList();
+}
+
+@if (recipes.Any())
+{
+    <div class="container-fluid rounded overflow-hidden" id="search-partial" style="padding: 0;text-align: center;">
+        <h2>Søketreff:</h2>
+        <i style="font-size: 0.9em;">Viser @recipes.Count() av @totalResultCount treff </i>
+        <ul style="padding: 0;">
+            @foreach (var r in recipes)
+            {
+
+                <li class="resultRow shadow overflow-hidden"><a href="https://localhost:5001/Recipes/Details/@r.Id">
+                    @r.Title <br>
+                    <img src="@r.ImagePath" alt="Matbilde" width="200" height="100"><br>
+                    <span class="timeBubble attachedBubble @(r.Time >= 30 ? "orangeBubble" : "blueBubble")"><span>@r.Time</span><br><span class="min">min</span></span>
+                    @if (r.Reviews != null)
+                    {
+                        var avg = Math.Round(r.Reviews.Average(recipe => recipe.Stars)/0.5)*0.5;
+                        var rest = avg % 1;
+                        var half = rest > 0;
+                        @for (var i = 0; i < avg-rest; i++)
+                        {
+                            <span class="fa fa-star"></span>
+                        }
+                        @if (half)
+                        {
+                            <span class="fa fa-star-half-o"></span>
+                        }
+                        @for (var i = Math.Round(avg); i < 5; i++)
+                        {
+                            <span class="fa fa-star-o"></span>
+                        }
+                    }<br>
+
+                    @if (r.ApplicationUser.ImagePath != null)
+                    {
+                        <img alt="Brukerbilde @r.ApplicationUser.UserName" class="userImage" src="@(r.ApplicationUser.ImagePath)">
+                    }
+                    else
+                    {
+                        <img alt="Brukerbilde @r.ApplicationUser.UserName" class="userImage" src="https://thumbs.dreamstime.com/b/happy-chef-logo-cooking-restaurant-food-symbol-194682894.jpg">
+                    }
+                    @if (r.UserId == r.ApplicationUser.Id)
+                    {
+                        // This will add pre-existing fields in the Applications users table that relates to recipe
+                        @r.ApplicationUser.UserName
+                    }
+                </a></li> 
+
+            }
+
+        </ul>
+    </div>
+}
+else
+{
+    <p>Ingen søketreff</p>
+}
